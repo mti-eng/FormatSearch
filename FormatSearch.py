@@ -46,7 +46,6 @@ class PlainCommand(sublime_plugin.TextCommand, Base):
     def run(self, edit):
         self.process(self.plain)
 
-
     def plain(self, text):
         return self.parseText(text, quote=False, suffix='')
 
@@ -57,6 +56,30 @@ class DrawingCommand(sublime_plugin.TextCommand, Base):
 
     def drawing(self, text):
         return self.parseText(text, quote=False, suffix='.SLDDRW')
+
+
+class IndesignCommand(sublime_plugin.TextCommand, Base):
+    def run(self, edit):
+        self.process(self.in_design)
+
+    def in_design(self, text):
+        return self.parseText(text, quote=False, suffix='.INDD')
+
+
+class IsoCommand(sublime_plugin.TextCommand, Base):
+    def run(self, edit):
+        self.process(self.iso)
+
+    def iso(self, text):
+        return self.parseText(text, quote=False, suffix='.ISO')
+
+
+class EpsCommand(sublime_plugin.TextCommand, Base):
+    def run(self, edit):
+        self.process(self.eps)
+
+    def iso(self, text):
+        return self.parseText(text, quote=False, suffix='.EPS')
 
 
 class PartCommand(sublime_plugin.TextCommand, Base):
@@ -97,4 +120,3 @@ class CommaCommand(sublime_plugin.TextCommand, Base):
                 parsed_text.append(str(par))
             string = ', '.join(parsed_text)
         return string
-

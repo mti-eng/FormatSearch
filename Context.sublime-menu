@@ -25,9 +25,13 @@
         "command" : "plain"
     },
     {
+        "caption" : "ISO",
+        "command" : "iso"
+    },
+    {
         "caption" : "Comma",
         "command" : "comma"
-    },
+    }
     ]
 }
 ]
