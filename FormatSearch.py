@@ -24,7 +24,7 @@ class Base(object):
         text = text[0].split('\n')
         return text
 
-    def parseText(self, paragraphs, quote=False, suffix=''):
+    def parseText(self, paragraphs, quote=False, suffix='', delimiter=' | '):
 
         parsed_text = []
         for par in paragraphs:
@@ -34,10 +34,10 @@ class Base(object):
         if quote:
             # parsed text should should be enclosed in double quotes, and
             # separated by commas and space
-            string = ', '.join(['"' + item + '"' for item in parsed_text])
+            string = delimiter.join(['"' + item + '"' for item in parsed_text])
         else:
             # create a space delimited list of the parsed text
-            string = ' '.join(parsed_text)
+            string = delimiter.join(parsed_text)
         return string
 
 
@@ -102,7 +102,7 @@ class TcmCommand(sublime_plugin.TextCommand, Base):
         self.process(self.TCM)
 
     def TCM(self, text):
-        return self.parseText(text, quote=True, suffix='')
+        return self.parseText(text, quote=True, suffix='', delimiter=', ')
 
 
 class CommaCommand(sublime_plugin.TextCommand, Base):
@@ -110,12 +110,4 @@ class CommaCommand(sublime_plugin.TextCommand, Base):
         self.process(self.comma)
 
     def comma(self, text):
-        return self.parseText(text)
-
-    def parseText(self, paragraphs):
-        parsed_text = []
-        for par in paragraphs:
-            if len(par) > 0:
-                parsed_text.append(str(par))
-            string = ', '.join(parsed_text)
-        return string
+        return self.parseText(text, suffix='', delimiter=', ')
