@@ -1,7 +1,6 @@
-import sublime
 import sublime_plugin
 
-from sublime import get_clipboard, set_clipboard
+from sublime import set_clipboard
 from Default.paragraph import expand_to_paragraph
 
 
