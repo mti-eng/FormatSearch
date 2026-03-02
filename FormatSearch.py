@@ -28,6 +28,7 @@ class Base(object):
 
         parsed_text = []
         for par in paragraphs:
+            par = par.strip()
             if len(par) > 0:
                 parsed_text.append(str(par) + suffix)
 
