@@ -22,13 +22,13 @@ class Base(object):
                     # there is some text already selected, use that only
                     text.append(view.substr(region))
         text = text[0].split('\n')
+        text = [t.strip() for t in text]
         return text
 
     def parseText(self, paragraphs, quote=False, suffix='', delimiter=' | '):
 
         parsed_text = []
         for par in paragraphs:
-            par = par.strip()
             if len(par) > 0:
                 parsed_text.append(str(par) + suffix)
 
