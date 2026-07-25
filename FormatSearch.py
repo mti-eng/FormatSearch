@@ -30,7 +30,7 @@ class Base(object):
         parsed_text = []
         for par in paragraphs:
             if len(par) > 0:
-                parsed_text.append(str(par) + suffix)
+                parsed_text.append(str(par))
 
         if quote:
             # parsed text should should be enclosed in double quotes, and
@@ -39,6 +39,10 @@ class Base(object):
         else:
             # create a space delimited list of the parsed text
             string = delimiter.join(parsed_text)
+
+        string = "(" + string + ")"
+        if suffix:
+            string = '{} & {}'.format(string, suffix)
         return string
 
 
